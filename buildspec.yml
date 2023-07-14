@@ -2,26 +2,17 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: corretto8
-
     commands:
-      - curl -o node.tar.xz https://nodejs.org/dist/v14.17.3/node-v14.17.3-linux-x64.tar.xz
-      - tar -xf node.tar.xz
-      - mv node-v14.17.3-linux-x64 node
-      - export PATH=$PWD/node/bin:$PATH
-
+     - echo "install phase started"
+     - npm install
+     - echo "install phase ended"
+  pre_build: 
+    commands:
+     - echo "pre_build aka test phase started"
+     - echo "mocha unit test"
+     - npm test
+     - echo "mocha unit test ended"
   build:
     commands:
-      - npm install
-      - npm run-script build
-
-artifacts:
-  files:
-    - public/**/*
-    - src/**/*
-    - package.json
-    - server.js
-    - appspec.yml
-    - scripts/**/*
-
+     - echo "build phase started"
+     - echo "build complete"
