@@ -6,10 +6,10 @@ phases:
       java: corretto8
 
     commands:
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-      - export NVM_DIR="$HOME/.nvm"
-      - [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-      - nvm install 14
+      - curl -o node.tar.xz https://nodejs.org/dist/v14.17.3/node-v14.17.3-linux-x64.tar.xz
+      - tar -xf node.tar.xz
+      - mv node-v14.17.3-linux-x64 node
+      - export PATH=$PWD/node/bin:$PATH
 
   build:
     commands:
@@ -24,27 +24,4 @@ artifacts:
     - server.js
     - appspec.yml
     - scripts/**/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
