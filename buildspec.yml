@@ -3,13 +3,15 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      java: corretto8
 
     commands:
-      - npm install
+      - curl -sL https://deb.nodesource.com/setup_14.x | bash -
+      - apt-get install -y nodejs
 
   build:
     commands:
+      - npm install
       - npm run-script build
 
 artifacts:
