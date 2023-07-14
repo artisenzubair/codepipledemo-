@@ -6,16 +6,26 @@ phases:
       - echo "install phase started"
       - npm install
       - echo "install phase ended"
+
   pre_build:
     commands:
       - echo "pre_build aka test phase started"
       - echo "mocha unit test"
       - npm test
       - echo "mocha unit test ended"
+
   build:
     commands:
       - echo "build phase started"
-      - sudo apt-get install xz-utils  # or the appropriate package manager command for your Linux distribution
       - tar -xf node.tar.xz
       - echo "build complete"
+
+artifacts:
+  files:
+    - public/**/*
+    - src/**/*
+    - package.json
+    - server.js
+    - appspec.yml
+    - scripts/**/*
 
